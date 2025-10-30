@@ -174,4 +174,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-'apos a introdução do codigo para a realização da atividade 2 a imagem gerada em vez de se criada separadamente esta se sobrepondo observa oque esta ocasionado isso.'
+
