@@ -1,10 +1,10 @@
-# main.py
+
 import math
 import algoritmos
 from scipy import integrate
 
 def main():
-    # Definição das funções
+
     fa = lambda x: math.exp(-x)
     fb = lambda x: x**2
     fc = lambda x: x**3
@@ -23,19 +23,17 @@ def main():
 
     a = 0
     b = 1
-    # O passo exato solicitado no print
     passo = 1e-3
 
     print(f"{'f':^5} | {'Ponto médio':^12} | {'Trapézio':^12} | {'Simpson':^12} | {'SciPy':^12}")
     print("-" * 65)
 
     for nome, f in funcoes.items():
-        # Cálculo numérico (vai reproduzir o erro da tabela)
+
         res_medio = algoritmos.integral(algoritmos.medio, f, a, b, n=passo)
         res_trapezio = algoritmos.integral(algoritmos.trapezio, f, a, b, n=passo)
         res_simpson = algoritmos.integral(algoritmos.simpson, f, a, b, n=passo)
         
-        # O SciPy calcula a integral exata real (coluna da direita)
         res_scipy, _ = integrate.quad(f, a, b)
 
         print(f"{nome:^5} | {res_medio:12.8f} | {res_trapezio:12.8f} | {res_simpson:12.8f} | {res_scipy:12.8f}")

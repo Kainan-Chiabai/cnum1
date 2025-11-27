@@ -6,23 +6,13 @@ from algoritmos2 import (
     integral,
 )
 
-# A função para a Atividade 2 é:
-# Integral de 2 a 5 de e^(4-x^2) dx
-
 def f_atividade2(x):
     return np.exp(4 - x**2)
 
 def integral_composta_n(metodo, f, a, b, N):
-    """
-    Calcula a integral composta usando N pontos.
-    
-    Para Trapézio e Simpson, M = N - 1 subintervalos.
-    Para Ponto Médio, vamos testar a hipótese de M = N subintervalos,
-    pois os resultados anteriores não batiam com M = N - 1.
-    """
     
     if metodo == medio:
-        # Ponto Médio Composto (Hipótese: M = N subintervalos)
+
         M = N
         h = (b - a) / M
         
@@ -32,12 +22,12 @@ def integral_composta_n(metodo, f, a, b, N):
             s += h * f(x_i + h / 2)
         return s
     
-    # Para Trapézio e Simpson, M = N - 1 subintervalos (como antes)
+
     M = N - 1
     h = (b - a) / M
     
     if metodo == trapezio:
-        # Trapézio Composto
+
         s = f(a) + f(b)
         for i in range(1, M):
             x_i = a + i * h
@@ -45,9 +35,8 @@ def integral_composta_n(metodo, f, a, b, N):
         return s * h / 2
     
     elif metodo == simpson:
-        # Simpson Composto
+
         if M % 2 != 0:
-            # A regra de Simpson composta requer um número par de subintervalos (M).
             print(f"Aviso: A regra de Simpson composta requer um número par de subintervalos. N={N} (M={M})")
             return 0.0
             
@@ -65,7 +54,7 @@ def integral_composta_n(metodo, f, a, b, N):
 
 
 def main():
-    # Atividade 2
+
     print("-- Atividade 2 (Tentativa de correção do Ponto Médio) --")
 
     a = 2
@@ -78,15 +67,15 @@ def main():
     for N in N_values:
         print(f"\n--- N = {N} pontos ---")
         
-        # Ponto Médio Composto
+
         r_medio = integral_composta_n(medio, f_atividade2, a, b, N)
         print(f"Ponto Médio = {r_medio:.7f}")
         
-        # Trapézio Composto
+   
         r_trapezio = integral_composta_n(trapezio, f_atividade2, a, b, N)
         print(f"Trapézio = {r_trapezio:.7f}")
         
-        # Simpson Composto
+ 
         r_simpson = integral_composta_n(simpson, f_atividade2, a, b, N)
         print(f"Simpson = {r_simpson:.7f}")
         
